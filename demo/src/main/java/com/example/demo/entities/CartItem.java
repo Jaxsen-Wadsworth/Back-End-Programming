@@ -1,76 +1,47 @@
 package com.example.demo.entities;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.util.Date;
 import java.util.Set;
 
+@Entity
+@Table(name= "cart_item")
+@Getter
+@Setter
 public class CartItem {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "vacation")
     private Vacation vacation;
+    @Column(name = "id")
     private Set<Excursion> excursions;
+    @Column(name = "id")
     private Cart cart;
+    @Column(name = "create_date")
+    @CreationTimestamp
     private Date create_date;
+    @Column(name = "last_update")
+    @UpdateTimestamp
     private Date last_update;
 
     //constructors
     public CartItem() {
     }
 
-    public CartItem(long id, Vacation vacation, Set<Excursion> excursions, Cart cart, Date create_date, Date last_update) {
+    public CartItem(Long id, Vacation vacation, Set<Excursion> excursions, Cart cart, Date create_date, Date last_update) {
         this.id = id;
         this.vacation = vacation;
         this.excursions = excursions;
         this.cart = cart;
         this.create_date = create_date;
-        this.last_update = last_update;
-    }
-
-    //getters and setters
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Vacation getVacation() {
-        return vacation;
-    }
-
-    public void setVacation(Vacation vacation) {
-        this.vacation = vacation;
-    }
-
-    public Set<Excursion> getExcursions() {
-        return excursions;
-    }
-
-    public void setExcursions(Set<Excursion> excursions) {
-        this.excursions = excursions;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
-
-    public Date getCreate_date() {
-        return create_date;
-    }
-
-    public void setCreate_date(Date create_date) {
-        this.create_date = create_date;
-    }
-
-    public Date getLast_update() {
-        return last_update;
-    }
-
-    public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
 }

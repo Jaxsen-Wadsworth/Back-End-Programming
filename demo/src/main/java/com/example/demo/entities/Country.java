@@ -1,20 +1,40 @@
 package com.example.demo.entities;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.util.Date;
 import java.util.Set;
 
+@Entity
+@Table(name= "cart")
+@Getter
+@Setter
 public class Country {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "country_name")
     private String country_name;
+    @Column(name = "create_date")
+    @CreationTimestamp
     private Date create_date;
+    @Column(name = "last_update")
+    @UpdateTimestamp
     private Date last_update;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
     private Set<Division> divisions;
 
     //constructors
     public Country() {
     }
 
-    public Country(long id, String country_name, Date create_date, Date last_update, Set<Division> divisions) {
+    public Country(Long id, String country_name, Date create_date, Date last_update, Set<Division> divisions) {
         this.id = id;
         this.country_name = country_name;
         this.create_date = create_date;
@@ -24,11 +44,11 @@ public class Country {
 
     //setters and getters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,22 +1,47 @@
 package com.example.demo.entities;//customer class
 
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.util.Date;
 import java.util.Set;
 
+@Entity
+@Table(name= "cart")
+@Getter
+@Setter
 public class Customer {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "address")
     private String address;
+    @Column(name = "postal_code")
     private String postal_code;
+    @Column(name = "phone")
     private String phone;
+    @Column(name = "create_date")
+    @CreationTimestamp
     private Date create_date;
+    @Column(name = "last_update")
+    @UpdateTimestamp
     private Date last_update;
+    @ManyToOne()
+    @JoinColumn(name = "division_id")
     private Division division;
     private Set<Cart> carts;
 
-    public Customer(long id, String firstName, String lastName, String address, String postal_code, String phone, Date create_date, Date last_update, Division division, Set<Cart> carts) {
+    public Customer(Long id, String firstName, String lastName, String address, String postal_code, String phone, Date create_date, Date last_update, Division division, Set<Cart> carts) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,11 +54,11 @@ public class Customer {
         this.carts = carts;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

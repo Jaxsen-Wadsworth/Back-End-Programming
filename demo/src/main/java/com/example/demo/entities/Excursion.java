@@ -1,15 +1,36 @@
 package com.example.demo.entities;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
+@Entity
+@Table(name= "cart")
+@Getter
+@Setter
 public class Excursion {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "excursion_title")
     private String excursion_title;
+    @Column(name = "excursion_price")
     private BigDecimal excusion_price;
+    @Column(name = "image_url")
     private String image_URL;
+    @Column(name = "create_date")
+    @CreationTimestamp
     private Date create_date;
+    @Column(name = "last_update")
+    @UpdateTimestamp
     private  Date last_update;
     private Vacation vacation;
     private Set<CartItem> cartItems;
@@ -19,7 +40,7 @@ public class Excursion {
     public Excursion() {
     }
 
-    public Excursion(long id, String excursion_title, BigDecimal excusion_price, String image_URL, Date create_date, Date last_update, Vacation vacation, Set<CartItem> cartItems) {
+    public Excursion(Long id, String excursion_title, BigDecimal excusion_price, String image_URL, Date create_date, Date last_update, Vacation vacation, Set<CartItem> cartItems) {
         this.id = id;
         this.excursion_title = excursion_title;
         this.excusion_price = excusion_price;
@@ -32,11 +53,11 @@ public class Excursion {
 
     //getters and setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

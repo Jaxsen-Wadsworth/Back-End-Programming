@@ -1,16 +1,38 @@
 package com.example.demo.entities;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
+@Entity
+@Table(name= "cart")
+@Getter
+@Setter
 public class Vacation {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "vacation_title")
     private String vacation_title;
+    @Column(name = "description")
     private String description;
+    @Column(name = "travel_price")
     private BigDecimal travel_price;
+    @Column(name = "image_url")
     private String image_URL;
+    @Column(name = "create_date")
+    @CreationTimestamp
     private Date create_date;
+    @Column(name = "last_update")
+    @UpdateTimestamp
     private Date last_update;
     private Set<Excursion> excursions;
 
@@ -19,7 +41,7 @@ public class Vacation {
     public Vacation() {
     }
 
-    public Vacation(long id, String vacation_title, String description, BigDecimal travel_price, String image_URL, Date create_date, Date last_update, Set<Excursion> excursions) {
+    public Vacation(Long id, String vacation_title, String description, BigDecimal travel_price, String image_URL, Date create_date, Date last_update, Set<Excursion> excursions) {
         this.id = id;
         this.vacation_title = vacation_title;
         this.description = description;
@@ -32,11 +54,11 @@ public class Vacation {
 
     //getters and setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
