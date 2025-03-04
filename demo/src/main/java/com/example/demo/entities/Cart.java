@@ -34,9 +34,10 @@ public class Cart {
     @Column(name = "last_update")
     @UpdateTimestamp
     private Date last_update;
-    @Column(name = "customer")
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
     private Set<CartItem> cartItem;
 
     //constructors

@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name= "cart")
+@Table(name= "division")
 @Getter
 @Setter
 public class Division {

@@ -19,11 +19,13 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "vacation")
+    @ManyToOne
+    @JoinColumn(name = "vacation_id")
     private Vacation vacation;
-    @Column(name = "id")
-    private Set<Excursion> excursions;
-    @Column(name = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cartItem")
+    private Set<ExcursionCartItem> excursions;
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
     private Cart cart;
     @Column(name = "create_date")
     @CreationTimestamp
@@ -36,7 +38,7 @@ public class CartItem {
     public CartItem() {
     }
 
-    public CartItem(Long id, Vacation vacation, Set<Excursion> excursions, Cart cart, Date create_date, Date last_update) {
+    public CartItem(Long id, Vacation vacation, Set<ExcursionCartItem> excursions, Cart cart, Date create_date, Date last_update) {
         this.id = id;
         this.vacation = vacation;
         this.excursions = excursions;
