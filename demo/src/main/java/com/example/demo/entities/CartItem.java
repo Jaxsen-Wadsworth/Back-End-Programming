@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,7 +24,7 @@ public class CartItem {
     @JoinColumn(name = "vacation_id")
     private Vacation vacation;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cartItem")
-    private Set<ExcursionCartItem> excursions;
+    private Set<ExcursionCartItem> excursions =new HashSet<>();
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
@@ -35,6 +36,16 @@ public class CartItem {
     private Date last_update;
 
     //constructors
+    public void add(ExcursionCartItem excursion){
+        if(excursion != null){
+            if(excursions == null) {
+                excursions = new HashSet<>();
+            }
+            excursions.add(excursion);
+            excursion.setCartItem(this);
+        }
+    }
+
     public CartItem() {
     }
 

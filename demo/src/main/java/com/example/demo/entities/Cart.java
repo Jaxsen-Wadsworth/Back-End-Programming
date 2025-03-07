@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -38,9 +39,20 @@ public class Cart {
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
-    private Set<CartItem> cartItem;
+    private Set<CartItem> cartItems = new HashSet<>();
 
     //constructors
+    public void add(CartItem cartItem){
+        if(cartItems != null){
+            if(cartItem == null) {
+                cartItems = new HashSet<>();
+            }
+            cartItems.add(cartItem);
+            cartItem.setCart(this);
+        }
+    }
+
+
     public Cart() {
     }
 
@@ -53,6 +65,6 @@ public class Cart {
         this.create_date = create_date;
         this.last_update = last_update;
         this.customer = customer;
-        this.cartItem = cartItem;
+        this.cartItems = cartItem;
     }
 }
