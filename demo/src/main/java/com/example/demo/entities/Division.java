@@ -50,6 +50,12 @@ public class Division {
     public Division() {
     }
 
+    //bug fix
+    public Division(String url) {
+        this.id = Long.parseLong(url.substring(url.lastIndexOf('/')+1));
+
+    }
+
     public Division(Long id, String division_name, Date create_date, Date last_update, Country country, Long country_ID, Set<Customer> customer) {
         this.id = id;
         this.division_name = division_name;

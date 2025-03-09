@@ -57,6 +57,14 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(String firstName, String lastName, String address, String postal_code, String phone) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.postal_code = postal_code;
+        this.phone = phone;
+    }
+
     public Customer(Long id, String firstName, String lastName, String address, String postal_code, String phone, Date create_date, Date last_update, Division division, Set<Cart> carts) {
         this.id = id;
         this.firstName = firstName;
