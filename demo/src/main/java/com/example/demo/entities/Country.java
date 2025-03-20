@@ -11,16 +11,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name= "country")
+@Table(name= "countries")
 @Getter
 @Setter
 public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "country_id")
     private Long id;
-    @Column(name = "country_name")
+    @Column(name = "country")
     private String country_name;
     @Column(name = "create_date")
     @CreationTimestamp
@@ -45,12 +45,4 @@ public class Country {
     public Country() {
     }
 
-    public Country(Long id, String country_name, Date create_date, Date last_update, Set<Division> divisions) {
-        this.id = id;
-        this.country_name = country_name;
-        this.create_date = create_date;
-        this.last_update = last_update;
-        this.divisions = divisions;
-    }
-
-   }
+}

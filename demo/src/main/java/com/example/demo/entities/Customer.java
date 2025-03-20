@@ -12,18 +12,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name= "customer")
+@Table(name= "customers")
 @Getter
 @Setter
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "customer_id")
     private Long id;
-    @Column(name = "first_name")
+    @Column(name = "customer_first_name")
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "customer_last_name")
     private String lastName;
     @Column(name = "address")
     private String address;
@@ -63,19 +63,6 @@ public class Customer {
         this.address = address;
         this.postal_code = postal_code;
         this.phone = phone;
-    }
-
-    public Customer(Long id, String firstName, String lastName, String address, String postal_code, String phone, Date create_date, Date last_update, Division division, Set<Cart> carts) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.postal_code = postal_code;
-        this.phone = phone;
-        this.create_date = create_date;
-        this.last_update = last_update;
-        this.division = division;
-        this.carts = carts;
     }
 
 }

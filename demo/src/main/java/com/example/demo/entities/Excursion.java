@@ -12,14 +12,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name= "excursion")
+@Table(name= "excursions")
 @Getter
 @Setter
 public class Excursion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "excursion_id")
     private Long id;
     @Column(name = "excursion_title")
     private String excursion_title;
@@ -51,17 +51,6 @@ public class Excursion {
     }
 
     public Excursion() {
-    }
-
-    public Excursion(Long id, String excursion_title, BigDecimal excusion_price, String image_URL, Date create_date, Date last_update, Vacation vacation, Set<ExcursionCartItem> cartItems) {
-        this.id = id;
-        this.excursion_title = excursion_title;
-        this.excusion_price = excusion_price;
-        this.image_URL = image_URL;
-        this.create_date = create_date;
-        this.last_update = last_update;
-        this.vacation = vacation;
-        this.cartItems = cartItems;
     }
 
 }

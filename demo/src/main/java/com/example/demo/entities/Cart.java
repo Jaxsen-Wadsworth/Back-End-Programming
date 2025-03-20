@@ -13,15 +13,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name= "cart")
+@Table(name= "carts")
 @Getter
 @Setter
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "cart_id")
     private Long id;
-    @Column(name = "orderTrackingNumber")
+    @Column(name = "order_tracking_number")
     private String orderTrackingNumber;
     @Column(name = "package_price")
     private BigDecimal package_price;
@@ -52,19 +52,6 @@ public class Cart {
         }
     }
 
-
     public Cart() {
-    }
-
-    public Cart(Long id, String orderTrackingNumber, BigDecimal package_price, int party_size, StatusType status, Date create_date, Date last_update, Customer customer, Set<CartItem> cartItem) {
-        this.id = id;
-        this.orderTrackingNumber = orderTrackingNumber;
-        this.package_price = package_price;
-        this.party_size = party_size;
-        this.status = status;
-        this.create_date = create_date;
-        this.last_update = last_update;
-        this.customer = customer;
-        this.cartItems = cartItem;
     }
 }

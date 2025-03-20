@@ -12,20 +12,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name= "vacation")
+@Table(name= "vacations")
 @Getter
 @Setter
 public class Vacation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "vacation_id")
     private Long id;
     @Column(name = "vacation_title")
     private String vacation_title;
     @Column(name = "description")
     private String description;
-    @Column(name = "travel_price")
+    @Column(name = "travel_fare_price")
     private BigDecimal travel_price;
     @Column(name = "image_url")
     private String image_URL;
@@ -64,18 +64,5 @@ public class Vacation {
 
     public Vacation() {
     }
-
-    public Vacation(Long id, String vacation_title, String description, BigDecimal travel_price, String image_URL, Date create_date, Date last_update, Set<Excursion> excursions, Set<CartItem> cartItems) {
-        this.id = id;
-        this.vacation_title = vacation_title;
-        this.description = description;
-        this.travel_price = travel_price;
-        this.image_URL = image_URL;
-        this.create_date = create_date;
-        this.last_update = last_update;
-        this.excursions = excursions;
-        this.cartItems = cartItems;
-    }
-
 
 }

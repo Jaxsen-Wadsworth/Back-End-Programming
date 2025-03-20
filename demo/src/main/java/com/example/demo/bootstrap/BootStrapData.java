@@ -17,7 +17,7 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (customerRepository.count() == 0) {
+        if (customerRepository.count() == 1) {
             Customer Alpha = new Customer("Alpha", "A", "123 My Street", "12345", "0123456789");
             customerRepository.save(Alpha);
             Customer Beta = new Customer("Beta", "B", "123 My Street", "12345", "0123456789");
@@ -29,7 +29,7 @@ public class BootStrapData implements CommandLineRunner {
             Customer Omega = new Customer("Omega", "O", "123 My Street", "12345", "0123456789");
             customerRepository.save(Omega);
         }
-        System.out.print("Started in Bootstrap");
-        System.out.print("Number of Customers" + customerRepository.count());
+//        System.out.print("Started in Bootstrap");
+//        System.out.print("Number of Customers" + customerRepository.count());
     }
 }

@@ -11,16 +11,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name= "division")
+@Table(name= "divisions")
 @Getter
 @Setter
 public class Division {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "division_id")
     private Long id;
-    @Column(name = "division_name")
+    @Column(name = "division")
     private String division_name;
     @Column(name = "create_date")
     @CreationTimestamp
@@ -29,10 +29,10 @@ public class Division {
     @UpdateTimestamp
     private Date last_update;
     @ManyToOne
-    @JoinColumn(name = "country", nullable = false)
+    @JoinColumn(name = "country_id", nullable = false)
     private Country country;
-    @Column(name = "country_id")
-    private Long country_ID;
+//    @Column(name = "id")
+//    private Long country_ID;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "division")
     private Set<Customer> customers = new HashSet<>();
 
@@ -56,13 +56,4 @@ public class Division {
 
     }
 
-    public Division(Long id, String division_name, Date create_date, Date last_update, Country country, Long country_ID, Set<Customer> customer) {
-        this.id = id;
-        this.division_name = division_name;
-        this.create_date = create_date;
-        this.last_update = last_update;
-        this.country = country;
-        this.country_ID = country_ID;
-        this.customers = customer;
-    }
 }
