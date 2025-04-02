@@ -27,6 +27,7 @@ public class Cart {
     private BigDecimal package_price;
     @Column(name = "party_size")
     private int  party_size;
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private StatusType status;
     @Column(name = "create_date")

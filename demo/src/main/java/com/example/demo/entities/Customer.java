@@ -63,6 +63,7 @@ public class Customer {
         this.address = address;
         this.postal_code = postal_code;
         this.phone = phone;
+        //this.division = division;
     }
 
 }
