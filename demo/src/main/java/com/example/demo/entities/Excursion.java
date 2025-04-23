@@ -36,20 +36,10 @@ public class Excursion {
     @ManyToOne
     @JoinColumn(name = "vacation_id")
     private Vacation vacation;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "excursion")
-    private Set<ExcursionCartItem> cartItems = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "excursions")
+    private Set<CartItem> cartItems = new HashSet<>();
 
     //constructors
-    public void add(ExcursionCartItem cartItem){
-        if(cartItem != null){
-            if(cartItems == null) {
-                cartItems = new HashSet<>();
-            }
-            cartItems.add(cartItem);
-            cartItem.setExcursion(this);
-        }
-    }
-
     public Excursion() {
     }
 

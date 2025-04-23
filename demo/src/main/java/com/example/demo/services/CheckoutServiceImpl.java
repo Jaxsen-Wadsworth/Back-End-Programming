@@ -21,7 +21,6 @@ import static com.example.demo.entities.StatusType.*;
 public class CheckoutServiceImpl implements CheckoutService{
     private CartRepository cartRepository;
     private CartItemRepository cartItemRepository;
-    private DivisionRepository divisionRepository;
     private String generateOrderTrackingNumber() {
         return UUID.randomUUID().toString();
     }
@@ -38,9 +37,9 @@ public class CheckoutServiceImpl implements CheckoutService{
         cart.setStatus(ordered);
         String orderTrackingNumber = generateOrderTrackingNumber();
         cart.setOrderTrackingNumber(orderTrackingNumber);
-        cartRepository.save(cart);
         Set<CartItem> cartItems = purchase.getCartItems();
         cartItems.forEach(item -> cart.add(item));
+        cartRepository.save(cart);
         return new PurchaseResponse(orderTrackingNumber);
     }
 }

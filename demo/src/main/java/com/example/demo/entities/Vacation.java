@@ -41,27 +41,6 @@ public class Vacation {
     private Set<CartItem> cartItems = new HashSet<>();
 
     //constructors
-    public void add(Excursion excursion){
-        if(excursion != null){
-            if(excursions == null) {
-                excursions = new HashSet<>();
-            }
-            excursions.add(excursion);
-            excursion.setVacation(this);
-        }
-    }
-
-
-    public void add(CartItem cartItem){
-        if(cartItem != null){
-            if(cartItems == null) {
-                cartItems = new HashSet<>();
-            }
-            cartItems.add(cartItem);
-            cartItem.setVacation(this);
-        }
-    }
-
     public Vacation() {
     }
 

@@ -23,8 +23,11 @@ public class CartItem {
     @ManyToOne
     @JoinColumn(name = "vacation_id")
     private Vacation vacation;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cartItem")
-    private Set<ExcursionCartItem> excursions =new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "excursion_cartitem",
+            joinColumns = @JoinColumn(name = "cart_item_id"),
+           inverseJoinColumns = @JoinColumn(name = "excursion_id"))
+    private Set<Excursion> excursions = new HashSet<>();
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
@@ -36,16 +39,6 @@ public class CartItem {
     private Date last_update;
 
     //constructors
-    public void add(ExcursionCartItem excursion){
-        if(excursion != null){
-            if(excursions == null) {
-                excursions = new HashSet<>();
-            }
-            excursions.add(excursion);
-            excursion.setCartItem(this);
-        }
-    }
-
     public CartItem() {
     }
 
