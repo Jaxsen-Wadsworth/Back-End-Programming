@@ -38,6 +38,7 @@ public class CheckoutServiceImpl implements CheckoutService{
         String orderTrackingNumber = generateOrderTrackingNumber();
         cart.setOrderTrackingNumber(orderTrackingNumber);
         Set<CartItem> cartItems = purchase.getCartItems();
+        cartItems.forEach(item -> item.getExcursions().forEach(excursion -> excursion.setVacation(item.getVacation())));
         cartItems.forEach(item -> cart.add(item));
         cartRepository.save(cart);
         return new PurchaseResponse(orderTrackingNumber);
